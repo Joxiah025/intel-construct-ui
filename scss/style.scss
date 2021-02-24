@@ -1,0 +1,347 @@
+// Your code
+$body-bg: #F5F5F5; // BASE COLOR
+$body-color: #111;
+$default-margin: 4rem;
+
+// Colors
+$primary: #276FB4;
+$secondary: #F68E39;
+$danger: #D34A4A;
+$info: #00A1FC;
+$success: #549E31;
+
+// Texts
+$dark: #333333;
+$grey: #666666;
+$lighter-grey: #999999;
+$light: #BBBBBB;
+$divider: #DDDDDD;
+
+$sidebar: #30353A;
+
+
+// Our Custom sass code
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
+  "info": $info,
+  "success": $success,
+);
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Raleway:wght@400;500;600;700&display=swap');
+
+.wrapper {
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  display: flex;
+  min-height: 100vh;
+  &__sidebar {
+    background: $sidebar;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+    @include media-breakpoint-up(md) {
+      width: 6%;
+    }
+
+    &__header {
+      &__hamburger {
+        display: flex;
+        justify-content: center;
+        &__icon:last-child {
+          margin-left: 10px;
+        }
+      }
+      
+      @include media-breakpoint-down(sm) {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin: auto 1.5rem;
+      }
+      @include media-breakpoint-up(md) {
+        padding-top: 20px;
+        padding-bottom: 20px;          
+        margin: auto 1rem;
+      }
+    }
+
+    &__menu {
+      margin: 5rem auto;
+      &__menu_box {
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem;
+        text-align: center;
+      }
+      &__menu_box--active {
+        border-left: 4px solid #276FB4;
+        background: #191919;
+      }
+    }
+  }
+  &__main {
+    &__header {
+      background: #FFFFFF;
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+      &__global-header {
+        display: flex;
+        justify-content: space-between;
+        &__space {
+          width: 50%;
+          display: flex;
+          justify-content: space-between;
+          &__logo {
+            width: 30%;
+          }
+          &__input {            
+            width: 70%;
+            input {
+              outline: none;
+              border: unset;
+              color: $lighter-grey;
+              line-height: 31px;
+              width: auto;
+              ::placeholder {
+                color: $lighter-grey;
+              }
+            }
+          }
+        }
+        &__menu {
+          display: flex;
+          justify-content: space-around;
+          &__menu_box {
+            width: auto;
+            margin: auto 1.5rem;
+            a {
+              color: $grey;
+              text-decoration: none;
+              font-weight: bold;
+            }
+          }
+          &__menu_box:last-child{
+            width: auto;
+            margin: auto 0rem auto 1.5rem;
+          }
+        }
+        @include media-breakpoint-down(sm) {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          margin: auto 1.5rem;
+        }
+        @include media-breakpoint-up(md) {
+          padding-top: 20px;
+          padding-bottom: 20px;          
+          margin: auto $default-margin;
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        height: 56px;
+      }
+      @include media-breakpoint-up(md) {
+        height: 76px;
+      }
+    }
+    &__notification {
+      margin: 5rem $default-margin 2rem;
+      &__board {
+        border: 2px dashed $light;
+        border-radius: 10px;
+        padding: 1rem;
+        display: flex;
+        &__space-one {
+          width: 87%;
+        }
+        &__space-two {
+          width: 13%;
+          display: flex;
+          justify-content: flex-end;
+          .close {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    &__header_box {
+      background: #FFFFFF;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      margin: auto $default-margin;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      &__title {
+        font-weight: bold 700;
+        font-family: 'oswald';
+        font-size: 28px;
+        color: $dark;
+      }
+      &__menu {
+        ul {
+          display: inline-flex;
+          margin-top: 10px;
+          margin-bottom: unset;
+          li {
+            list-style: none;
+            a {
+              margin: 10px 2rem;
+              cursor: pointer;
+              text-decoration: none;
+              color: $dark;
+              &.active {
+                color: $primary;
+                font-weight: bold;
+              }
+            }
+            a:hover, :active {
+              color: $primary;
+            }
+            &.dropdown {
+              position: relative;
+              display: inline-block;
+              
+              .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #FFFFFF;
+                min-width: 15rem;
+                background: #FFFFFF;
+                box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.25);
+                border-radius: 4px;
+                z-index: 1; 
+                .menu-list {
+                  margin: 0.6rem auto;
+                  .item { 
+                      width: 100%;
+                      padding: 0.5rem 1.6rem;
+                      text-decoration: none;
+                      color: $grey;
+                      margin: 0px;
+                      display: block;
+                      &:hover {
+                        color: #FFFFFF;
+                        background: $primary;
+                      } 
+                  }
+                }
+              }
+
+              &:hover .dropdown-content {
+                display: block;
+              }
+            }
+            
+            
+          }
+          li:last-child {
+            margin-right: none;
+          }
+        }
+      }
+    }
+    &__tables {
+      margin: auto $default-margin;
+      display: flex;
+      justify-content: space-between;
+      &__box {
+        width: 50%;
+        margin: 3rem 1.5rem;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        background: #FFFFFF;
+        &__card {
+          width: 100%;
+          &__header {
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+            padding: 0.8rem;
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 20px;
+          }
+          &__subheader {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 16px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999999;
+            padding: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            div:first-child {
+              width: 80%
+            }
+            div:last-child {
+              width: 20%
+            }
+          }
+          &__body {
+            &__row {  
+              display: flex;
+              justify-content: space-between;            
+              padding: 0.8rem;
+              background: #FFFFFF;
+              // font-family: Poppins;
+              font-style: normal;
+              font-weight: normal;
+              font-size: 13px;
+              line-height: 20px;
+              letter-spacing: 0.03em;
+              cursor: pointer;
+              &--grey {
+                background: rgba(0,0,0,0.03);
+              }
+              &:hover {
+                background: $primary;
+                color: #FFFFFF;
+              }
+              div {
+                width: 10%;
+              }
+              div:first-child {
+                width: 70%;
+              }
+              div:last-child {
+                width: 20%;
+              }
+
+            }
+          }
+          &__footer {
+            border-top: 1px solid rgba(0,0,0,0.03);
+            padding: 0.8rem;
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 20px;
+            display: flex;
+            justify-content: flex-end;
+            a {
+              text-decoration: none;
+              margin-right: 0.9rem;
+            }
+          }
+        }
+      }
+      &__box:last-child {
+        margin-right: unset;
+      }
+      &__box:first-child {
+        margin-left: unset;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+    @include media-breakpoint-up(md) {
+      width: 94%;
+    }
+  }
+}
