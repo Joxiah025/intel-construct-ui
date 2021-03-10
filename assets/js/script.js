@@ -27,6 +27,14 @@ $(".search-box-input").on("click", function(e) {
     // e.stopPropagation();
 });
 
+$(".project_search").on("click", function(e) {
+    e.preventDefault();
+    $(this).parent(".input").hide();
+    $(".project_search_main").fadeIn("fast");
+    $(".search_project").focus();    
+    // e.stopPropagation();
+});
+
 $(".close-search").on("click", function(e) {
     e.preventDefault();
     $(".input-group").show();
@@ -48,6 +56,24 @@ $("#profile-icon").on("click", function(e) {
 $("#bar-link").on("click", function(e) {
     e.preventDefault();
     $(".territory").fadeIn("fast");
+});
+
+$(".submenu-one").on("click", function(e) {
+    e.preventDefault();
+    $(this).children(".menu-box").fadeIn("fast");
+});
+$(".submenu-two").on("click", function(e) {
+    e.preventDefault();
+    $(this).children(".menu-box").fadeIn("fast");
+});
+$(".submenu-three").on("click", function(e) {
+    e.preventDefault();
+    $(this).children(".menu-box").fadeIn("fast");
+});
+
+$(".updated-btn").on("click", function(e) {
+    e.preventDefault();
+    $(".project-box-menu-list").fadeIn("fast");
 });
 
 $("body").on
@@ -75,6 +101,33 @@ $("body").on
         if ($(".wrapper__main__header__search").is(":visible")) {
             $(".input-group").show();
             $(".wrapper__main__header__search").fadeOut("fast");
+        }
+    }
+
+    if ($(e.target).closest(".project_search_main").get(0) == null && !e.target.classList.contains("project_search")) {
+        if ($(".project_search_main").is(":visible")) {
+            $(".project_search").parent(".input").show();            
+            $(".project_search_main").hide();            
+        }
+    }
+    if ($(e.target).closest(".menu-box").get(0) == null && !e.target.classList.contains("submenu-one")) {
+        if ($(".submenu-one > .menu-box").is(":visible")) {
+            $(".submenu-one > .menu-box").fadeOut("fast");
+        }
+    }
+    if ($(e.target).closest(".menu-box").get(0) == null && !e.target.classList.contains("submenu-two")) {
+        if ($(".submenu-two > .menu-box").is(":visible")) {
+            $(".submenu-two > .menu-box").fadeOut("fast");
+        }
+    }
+    if ($(e.target).closest(".menu-box").get(0) == null && !e.target.classList.contains("submenu-three")) {
+        if ($(".submenu-three > .menu-box").is(":visible")) {
+            $(".submenu-three > .menu-box").fadeOut("fast");
+        }
+    }
+    if ($(e.target).closest(".project-box-menu-list").get(0) == null && !e.target.classList.contains("updated-btn") && !e.target.classList.contains("text") && !e.target.classList.contains("arrow")) {
+        if ($(".project-box-menu-list").is(":visible")) {
+            $(".project-box-menu-list").fadeOut("fast");
         }
     }
   }
