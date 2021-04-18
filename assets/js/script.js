@@ -1,6 +1,6 @@
 
 // sidebar
-$(".wrapper__sidebar__header__hamburger").on("click", function(e) {
+$(".wrapper__sidebar__header__hamburger > svg").on("click", function(e) {
     e.preventDefault();
     $(".wrapper__backdrop").fadeIn("fast");
     $(".wrapper__menu").fadeIn("fast");
@@ -132,3 +132,24 @@ $("body").on
     }
   }
 );
+
+// mobile 
+$("div.map-menu").on("click", function(e) {
+    e.preventDefault();
+    if($("div.list-menu").hasClass("active")) { 
+        $("div.list-menu").removeClass("active");
+    }
+    $(this).addClass("active");
+    $(".section-one").show();
+    $(".section-two").hide();
+});
+
+$("div.list-menu").on("click", function(e) {
+    e.preventDefault();
+    if($("div.map-menu").hasClass("active")) { 
+        $("div.map-menu").removeClass("active");
+    }
+    $(this).addClass("active");
+    $(".section-two").show();
+    $(".section-one").hide();
+});

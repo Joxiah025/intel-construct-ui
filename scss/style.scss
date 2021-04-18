@@ -42,6 +42,12 @@ $theme-colors: (
   font-family: 'oswald';
   font-size: 28px;
   color: $dark;
+  @include media-breakpoint-down(sm) {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
 
 .title-two {
@@ -151,7 +157,9 @@ $theme-colors: (
       &__hamburger {
         display: flex;
         justify-content: center;
-        cursor: pointer;
+        &__icon {
+          cursor: pointer;
+        }
         &__icon:last-child {
           margin-left: 10px;
         }
@@ -358,6 +366,10 @@ $theme-colors: (
             }
           }
         }
+        @include media-breakpoint-down(sm) {
+          width: 350px;
+          right: -90px;
+        }
       }
 
       #profile-icon {
@@ -428,6 +440,7 @@ $theme-colors: (
           // z-index: 1;
           position: relative;
           input {
+            margin-bottom: 10px;
             padding-right: 45px;
             background: transparent;
             outline: none;
@@ -450,10 +463,30 @@ $theme-colors: (
               border: 2px solid #ced4da;
               outline: none;
             }
+            @include media-breakpoint-down(sm) {
+              color: #30353A;
+            }
           }
+          
           &.project_search_main {
+            box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
             display: none;
             z-index: 1;
+            .caret {
+              position: absolute;
+              top: -17px;
+            }
+            @include media-breakpoint-down(sm) {
+              position: absolute;
+              top: 120px;
+              background: white;
+              width: calc(100% - 40px);
+              left: 0;
+              margin: auto 20px;
+              z-index: 10;
+              padding: 20px;
+              border-radius: 4px;
+            }
           }
           .icon {
             position: absolute;
@@ -462,6 +495,11 @@ $theme-colors: (
             color: #fff;
             svg {
               cursor: pointer;
+            }
+
+            @include media-breakpoint-down(sm) {
+              top: 23px;
+              right: 25px;
             }
           }
           .search-result {
@@ -486,6 +524,11 @@ $theme-colors: (
               line-height: 20px;
               letter-spacing: 0.03em;
               color: #000000;
+            }
+            @include media-breakpoint-down(sm) {
+              box-shadow: none;
+              border-radius: none;
+              padding-bottom: 10px;
             }
           }
         }
@@ -566,6 +609,30 @@ $theme-colors: (
           }
         }
       }
+      .sub-mobile {
+        width: 100%;
+        div.sub-menu {
+          width: calc(100%/3);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          span.text {
+            font-family: Raleway;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 20px;
+            letter-spacing: 0.03em;
+            color: #fff;
+          }
+          &.active {
+            background: #165796;
+          }
+        }
+      }
+      @include media-breakpoint-down(sm) {
+        height: 55px;
+      }
     }
     &__projectmap {
       position: relative;
@@ -622,6 +689,10 @@ $theme-colors: (
               } 
           }
         }
+        @include media-breakpoint-down(sm) {
+          right: 0;
+          left: -15px;
+        }
       }
       .updated-btn {
         display: flex;
@@ -668,11 +739,17 @@ $theme-colors: (
           line-height: 20px;
           letter-spacing: 0.03em;
           color: #FFFFFF;
+
+          @include media-breakpoint-down(sm) {
+            height: 50px;
+            font-weight: normal;
+          }
         }
       }
       .section-two {
         overflow-y: scroll;
         height: 100vh;
+        padding-bottom: 130px !important;
         .text {
           font-family: Raleway;
           font-style: normal;
@@ -681,6 +758,9 @@ $theme-colors: (
           line-height: 20px;
           letter-spacing: 0.03em;
           color: #333333;
+          @include media-breakpoint-down(sm) {
+            font-size: 10px;
+          }
         }
 
         .project__box {
@@ -766,6 +846,15 @@ $theme-colors: (
       background: #FFFFFF;
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       &__menu {
+        .filter {
+          font-family: Raleway;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 20px;
+          letter-spacing: 0.03em;
+          color: #333333;
+        }
         ul {
           display: inline-flex;
           margin-top: 10px;
@@ -837,7 +926,9 @@ $theme-colors: (
       
           }
             
-            
+            @include media-breakpoint-down(sm) {
+              display: none;
+            }
           }
           li:last-child {
             margin-right: none;
@@ -897,10 +988,47 @@ $theme-colors: (
     width: 300px;
     background: $sidebar;
     z-index: 10;
-    &__header {
-      &__close {
+    &__input {
+      position: relative;
+      margin: 3rem auto;
+      input {
+        padding-right: 45px;
+        background: transparent;
+        outline: none;
+        border: 2px solid #ced4da;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
         display: flex;
-        justify-content: flex-end;        
+        align-items: center;
+        letter-spacing: 0.03em;
+        color: #fff;
+        border-radius: 4px;
+
+        &:focus {
+          background: transparent;
+          color: #fff;
+          outline: none;
+          border-color: unset;
+          box-shadow: none;
+        }
+      }
+      .icon {
+        position: absolute;
+        top: 6px;
+        right: 15px;
+        color: #fff;
+      }
+    }
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      &__img {
+
+      }
+      &__close {                
         margin: 20px;
         svg {
           cursor: pointer;
@@ -920,7 +1048,7 @@ $theme-colors: (
     }
 
     &__menu {
-      margin: 8rem auto;
+      margin: auto;
       &__box {
         display: flex;
         justify-content: flex-start;
